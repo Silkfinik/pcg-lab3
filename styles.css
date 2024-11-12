@@ -1,0 +1,225 @@
+/* Общие стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Шапка сайта */
+header {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+/* Основной контент */
+main {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Раздел загрузки */
+.upload-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.upload-section input[type="file"] {
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.upload-section input[type="file"]:hover {
+  border-color: #4a90e2;
+  background-color: #f0f8ff;
+}
+
+/* Раздел canvas */
+.canvas-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.canvas-wrapper {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer; /* Указатель курсора для интерактивности */
+}
+
+.canvas-wrapper h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #4a90e2;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Раздел управления */
+.controls-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.controls-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4a90e2;
+}
+
+.control-group {
+  margin-bottom: 30px;
+}
+
+.control-group h3 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Подвал сайта */
+footer {
+  background-color: #4a90e2;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  font-size: 0.9em;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .canvas-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .controls-section {
+    padding: 15px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* Стили для модального окна */
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Остаётся на месте */
+  z-index: 1000; /* Поверх других элементов */
+  padding-top: 60px; /* Отступ сверху */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ширина */
+  height: 100%; /* Высота */
+  overflow: auto; /* Включить прокрутку при необходимости */
+  background-color: rgba(0, 0, 0, 0.8); /* Чёрный фон с прозрачностью */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Эффект увеличения при наведении */
+.canvas-wrapper:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
