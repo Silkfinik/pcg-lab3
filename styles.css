@@ -1,4 +1,3 @@
-/* Общие стили */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,7 +14,6 @@ body {
   min-height: 100vh;
 }
 
-/* Шапка сайта */
 header {
   background-color: #4a90e2;
   color: #fff;
@@ -29,7 +27,6 @@ header h1 {
   font-weight: 500;
 }
 
-/* Основной контент */
 main {
   flex: 1;
   padding: 20px;
@@ -37,7 +34,6 @@ main {
   margin: 0 auto;
 }
 
-/* Раздел загрузки */
 .upload-section {
   text-align: center;
   margin-bottom: 30px;
@@ -57,7 +53,6 @@ main {
   background-color: #f0f8ff;
 }
 
-/* Раздел canvas */
 .canvas-section {
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +69,7 @@ main {
   text-align: center;
   width: 100%;
   max-width: 500px;
-  cursor: pointer; /* Указатель курсора для интерактивности */
+  cursor: pointer;
 }
 
 .canvas-wrapper h3 {
@@ -89,7 +84,6 @@ canvas {
   border-radius: 4px;
 }
 
-/* Раздел управления */
 .controls-section {
   background-color: #fff;
   padding: 20px;
@@ -134,23 +128,10 @@ canvas {
   transform: translateY(0);
 }
 
-/* Подвал сайта */
-footer {
-  background-color: #4a90e2;
-  color: #fff;
-  text-align: center;
-  padding: 15px 0;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
 footer p {
   font-size: 0.9em;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
   .canvas-section {
     flex-direction: column;
@@ -167,18 +148,17 @@ footer p {
   }
 }
 
-/* Стили для модального окна */
 .modal {
-  display: none; /* Скрыто по умолчанию */
-  position: fixed; /* Остаётся на месте */
-  z-index: 1000; /* Поверх других элементов */
-  padding-top: 60px; /* Отступ сверху */
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
   left: 0;
   top: 0;
-  width: 100%; /* Ширина */
-  height: 100%; /* Высота */
-  overflow: auto; /* Включить прокрутку при необходимости */
-  background-color: rgba(0, 0, 0, 0.8); /* Чёрный фон с прозрачностью */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modal-content {
@@ -217,7 +197,6 @@ footer p {
   cursor: pointer;
 }
 
-/* Эффект увеличения при наведении */
 .canvas-wrapper:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   transform: scale(1.02);

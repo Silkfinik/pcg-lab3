@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <title>Обработка изображений</title>
     <link rel="stylesheet" href="styles.css" />
-    <!-- Google Fonts для улучшения типографики -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
@@ -34,7 +33,6 @@
       <section id="controls" class="controls-section">
         <h2>Выберите метод обработки:</h2>
 
-        <!-- Низкочастотные фильтры -->
         <div class="control-group">
           <h3>Низкочастотные фильтры</h3>
           <button class="btn" onclick="applyLowPassFilter()">
@@ -42,7 +40,6 @@
           </button>
         </div>
 
-        <!-- Локальная пороговая обработка -->
         <div class="control-group">
           <h3>Локальная пороговая обработка</h3>
           <button class="btn" onclick="applyOtsuThreshold()">Метод Оцу</button>
@@ -51,7 +48,6 @@
           </button>
         </div>
 
-        <!-- Адаптивная пороговая обработка -->
         <div class="control-group">
           <h3>Адаптивная пороговая обработка</h3>
           <button class="btn" onclick="applyAdaptiveThreshold()">
@@ -61,7 +57,6 @@
       </section>
     </main>
 
-    <!-- Модальное окно для увеличения изображения -->
     <div id="imageModal" class="modal">
       <span class="close" onclick="closeModal()">&times;</span>
       <img class="modal-content" id="modalImage" />

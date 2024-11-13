@@ -11,7 +11,6 @@ const closeBtn = document.getElementsByClassName("close")[0];
 
 upload.addEventListener("change", loadImage);
 
-// Обработчики кликов для открытия модального окна
 originalCanvas.addEventListener("click", function () {
   if (!originalImage) return;
   openModal(originalCanvas, "Оригинальное изображение");
@@ -52,7 +51,6 @@ function updateProcessedCanvas() {
   ctx.putImageData(processedImage, 0, 0);
 }
 
-// Функция для открытия модального окна
 function openModal(canvas, title) {
   const dataURL = canvas.toDataURL();
   modal.style.display = "block";
@@ -60,19 +58,16 @@ function openModal(canvas, title) {
   captionText.innerHTML = title;
 }
 
-// Функция для закрытия модального окна
 function closeModal() {
   modal.style.display = "none";
 }
 
-// Закрытие модального окна при клике вне изображения
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
 
-// Функция сглаживающего фильтра (средний фильтр)
 function applyLowPassFilter() {
   if (!originalImage) return;
   const width = originalImage.width;
@@ -86,7 +81,7 @@ function applyLowPassFilter() {
     [1 / 9, 1 / 9, 1 / 9],
   ];
 
-  const kSize = 1; // Радиус ядра
+  const kSize = 1;
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -118,7 +113,6 @@ function applyLowPassFilter() {
   updateProcessedCanvas();
 }
 
-// Локальная пороговая обработка (Метод Оцу)
 function applyOtsuThreshold() {
   if (!originalImage) return;
   const width = originalImage.width;
@@ -126,14 +120,12 @@ function applyOtsuThreshold() {
   const srcData = originalImage.data;
   const dstData = new Uint8ClampedArray(srcData.length);
 
-  // Вычисляем гистограмму
   const histogram = new Array(256).fill(0);
   for (let i = 0; i < srcData.length; i += 4) {
     const gray = rgbToGray(srcData[i], srcData[i + 1], srcData[i + 2]);
     histogram[gray]++;
   }
 
-  // Находим порог по методу Оцу
   let total = width * height;
   let sum = 0;
   for (let t = 0; t < 256; t++) sum += t * histogram[t];
@@ -161,7 +153,6 @@ function applyOtsuThreshold() {
     }
   }
 
-  // Применяем пороговое значение
   for (let i = 0; i < srcData.length; i += 4) {
     const gray = rgbToGray(srcData[i], srcData[i + 1], srcData[i + 2]);
     const value = gray >= threshold ? 255 : 0;
@@ -173,7 +164,6 @@ function applyOtsuThreshold() {
   updateProcessedCanvas();
 }
 
-// Локальная пороговая обработка (Адаптивное среднее)
 function applyAdaptiveMeanThreshold() {
   if (!originalImage) return;
   const width = originalImage.width;
@@ -181,10 +171,9 @@ function applyAdaptiveMeanThreshold() {
   const srcData = originalImage.data;
   const dstData = new Uint8ClampedArray(srcData.length);
 
-  const kSize = 15; // Размер окна
+  const kSize = 15;
   const halfK = Math.floor(kSize / 2);
 
-  // Создаем интегральное изображение
   const integral = [];
   for (let y = 0; y < height; y++) {
     integral[y] = [];
@@ -198,7 +187,6 @@ function applyAdaptiveMeanThreshold() {
     }
   }
 
-  // Применяем локальный порог
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const x1 = Math.max(x - halfK, 0);
@@ -226,7 +214,6 @@ function applyAdaptiveMeanThreshold() {
   updateProcessedCanvas();
 }
 
-// Адаптивная пороговая обработка (Метод Бенсен)
 function applyAdaptiveThreshold() {
   if (!originalImage) return;
   const width = originalImage.width;
@@ -234,9 +221,9 @@ function applyAdaptiveThreshold() {
   const srcData = originalImage.data;
   const dstData = new Uint8ClampedArray(srcData.length);
 
-  const kSize = 15; // Размер окна
+  const kSize = 15;
   const halfK = Math.floor(kSize / 2);
-  const contrastThreshold = 15; // Порог контраста
+  const contrastThreshold = 15;
 
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -268,7 +255,6 @@ function applyAdaptiveThreshold() {
       const contrast = max - min;
       const idx = (y * width + x) * 4;
       if (contrast < contrastThreshold) {
-        // Если контраст низкий, устанавливаем пиксель как белый
         dstData[idx] = dstData[idx + 1] = dstData[idx + 2] = 255;
       } else {
         const gray = rgbToGray(
@@ -287,7 +273,6 @@ function applyAdaptiveThreshold() {
   updateProcessedCanvas();
 }
 
-// Вспомогательные функции
 function rgbToGray(r, g, b) {
   return Math.floor(0.299 * r + 0.587 * g + 0.114 * b);
 }
