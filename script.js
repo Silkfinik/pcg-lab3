@@ -37,7 +37,6 @@ function loadImage(e) {
       const ctx = originalCanvas.getContext("2d");
       ctx.drawImage(img, 0, 0);
       originalImage = ctx.getImageData(0, 0, img.width, img.height);
-      // Создаем копию для обработки
       processedImage = ctx.getImageData(0, 0, img.width, img.height);
       updateProcessedCanvas();
     };
